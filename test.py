@@ -9,7 +9,7 @@ cv2.moveWindow("left", 0, 0)
 cv2.moveWindow("right", 600, 0)
 cv2.createTrackbar("num", "depth", 0, 10, lambda x: None)
 cv2.createTrackbar("blockSize", "depth", 5, 255, lambda x: None)
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 cap.set(3, 1280)
 cap.set(4, 480)
