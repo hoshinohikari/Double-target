@@ -34,27 +34,28 @@ while True:
   img2_rectified = cv2.remap(frame2, camera_config.right_map1, camera_config.right_map2, cv2.INTER_LINEAR)  #依据MATLAB测量数据重建无畸变图片
 
   imgL = cv2.cvtColor(img1_rectified, cv2.COLOR_BGR2GRAY)
-  imgR = cv2.cvtColor(img2_rectified, cv2.COLOR_BGR2GRAY)
+  imgR = cv2.cvtColor(img2_rectified, cv2.COLOR_BGR2GRAY)  #BGR图像转灰度图
 
   num = cv2.getTrackbarPos("num", "depth")
-  blockSize = cv2.getTrackbarPos("blockSize", "depth")
+  blockSize = cv2.getTrackbarPos("blockSize", "depth")  #在depth图上增加滑条
+
   if blockSize % 2 == 0:
     blockSize += 1
   if blockSize < 5:
     blockSize = 5
 
-  stereo = cv2.StereoBM_create(numDisparities=16*num, blockSize=blockSize)
+  stereo = cv2.StereoBM_create(numDisparities=16*num, blockSize=blockSize)  #立体匹配，由滑条数值决定numDisparities与blockSize
   disparity = stereo.compute(imgL, imgR)
 
-  disp = cv2.normalize(disparity, disparity, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+  disp = cv2.normalize(disparity, disparity, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)  #归一化函数算法
 
-  threeD = cv2.reprojectImageTo3D(disparity.astype(np.float32)/16., camera_config.Q)
+  threeD = cv2.reprojectImageTo3D(disparity.astype(np.float32)/16., camera_config.Q)  #计算三维坐标数据值
 
   cv2.imshow("left", frame1)
   cv2.imshow("right", frame2)
   cv2.imshow("left_r", img1_rectified)
   cv2.imshow("right_r", img2_rectified)
-  cv2.imshow("depth", disp)
+  cv2.imshow("depth", disp)  #显示出修正畸变前后以及深度图的双目画面
 
   key = cv2.waitKey(1)
   if key == ord("q"):

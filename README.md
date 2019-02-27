@@ -16,6 +16,12 @@
 
 运行
 ------
+当想使用摄像头拍照时，请使用
+```
+python cap.py
+```
+当拍照完成后，使用MATLAB工具箱标定相机，得到的数据类似Calib_Results_stereo_data.txt内所描述，将其手工填至camera_config.py内，使用
 ```
 python test.py
 ```
+自行调整numDisparities与blockSize值后，点击depth图中的位置，就可在z轴读出距离  
