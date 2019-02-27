@@ -1,8 +1,12 @@
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture(1)
+cv2.namedWindow("left")
+cv2.namedWindow("right")
+cv2.moveWindow("left", 0, 0)
+cv2.moveWindow("right", 640, 0)
 
+cap = cv2.VideoCapture(2)
 cap.set(3, 1280)
 cap.set(4, 480)
 width, height = cap.get(3), cap.get(4)
@@ -15,11 +19,11 @@ while(1):
   framel = frame[0:480, 0:640]
   framer = frame[0:480, 640:1280]
 
-  cv2.imshow("capl", framel)
-  cv2.imshow("capr", framer)
+  cv2.imshow("left", framel)
+  cv2.imshow("right", framer)
   if cv2.waitKey(1) & 0xFF == ord('w'):
-    cv2.imwrite("D:\\Program\\Github\\Double-target\\alphal\\%d.bmp"%(i), framel)
-    cv2.imwrite("D:\\Program\\Github\\Double-target\\alphar\\%d.bmp"%(i), framer)
+    cv2.imwrite("alphal/cv2-%d.bmp"%(i), framel)
+    cv2.imwrite("alphar/cv2-%d.bmp"%(i), framer)
     print(i)
     i = i + 1
   elif cv2.waitKey(1) & 0xFF == ord('q'):
