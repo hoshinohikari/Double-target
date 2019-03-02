@@ -1,0 +1,26 @@
+Stereo calibration parameters after optimization:
+
+
+Intrinsic parameters of left camera:
+
+Focal Length:          fc_left = [ 885.43400   887.57674 ] � [ 32.07837   31.37212 ]
+Principal point:       cc_left = [ 674.11756   517.38525 ] � [ 15.82833   15.42109 ]
+Skew:             alpha_c_left = [ 0.00000 ] � [ 0.00000  ]   => angle of pixel axes = 90.00000 � 0.00000 degrees
+Distortion:            kc_left = [ -0.38471   0.12847   0.00209   0.00214  0.00000 ] � [ 0.02490   0.02172   0.00277   0.00208  0.00000 ]
+
+
+Intrinsic parameters of right camera:
+
+Focal Length:          fc_right = [ 888.35950   892.99743 ] � [ 31.34421   31.12004 ]
+Principal point:       cc_right = [ 659.60319   517.80199 ] � [ 16.22706   15.16580 ]
+Skew:             alpha_c_right = [ 0.00000 ] � [ 0.00000  ]   => angle of pixel axes = 90.00000 � 0.00000 degrees
+Distortion:            kc_right = [ -0.37909   0.12087   0.00260   0.00367  0.00000 ] � [ 0.02302   0.01946   0.00277   0.00266  0.00000 ]
+
+
+Extrinsic parameters (position of right camera wrt left camera):
+
+Rotation vector:             om = [ -0.00009   0.02300  -0.00372 ] � [ 0.00371   0.00734  0.00122 ]
+Translation vector:           T = [ -614.81702   12.58066  38.93339 ] � [ 9.09561   6.82170  24.57994 ]
+
+
+Note: The numerical errors are approximately three times the standard deviations (for reference).

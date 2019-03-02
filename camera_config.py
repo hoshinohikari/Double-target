@@ -1,21 +1,21 @@
 import cv2
 import numpy as np
 
-left_camera_matrix = np.array([[434.44586, 0., 339.86907],
-                               [0., 432.49167, 265.11827],
+left_camera_matrix = np.array([[885.43400, 0., 674.11756],
+                               [0., 887.57674, 517.38525],
                                [0., 0., 1.]])
-left_distortion = np.array([[-0.27267, 0.06513, -0.00544, 0.00149, 0.00000]])
+left_distortion = np.array([[-0.38471, 0.12847, 0.00209, 0.00214, 0.00000]])
 
-right_camera_matrix = np.array([[440.10519, 0., 315.50449],
-                                [0., 433.87997, 259.31157],
+right_camera_matrix = np.array([[888.35950, 0., 659.60319],
+                                [0., 892.99743, 517.80199],
                                 [0., 0., 1.]])
-right_distortion = np.array([[-0.27987, 0.06013, 0.00446, 0.01654, 0.00000]])
+right_distortion = np.array([[-0.37909, 0.12087, 0.00260, 0.00367, 0.00000]])
 
-om = np.array([-0.01393, 0.05559, -0.00784])
+om = np.array([-0.00009, 0.02300, -0.00372])
 R = cv2.Rodrigues(om)[0]
-T = np.array([-587.80646, 6.84464, 51.66740])
+T = np.array([-614.81702, 12.58066, 38.93339])
 
-size = (640, 480)
+size = (1280, 960)
 
 R1, R2, P1, P2, Q, validPixROI1, validPixROI2 = cv2.stereoRectify(left_camera_matrix, left_distortion,
                                                                   right_camera_matrix, right_distortion, size, R,

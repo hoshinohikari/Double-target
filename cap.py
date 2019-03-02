@@ -7,8 +7,8 @@ cv2.moveWindow("left", 0, 0)
 cv2.moveWindow("right", 640, 0)
 
 cap = cv2.VideoCapture(2)
-cap.set(3, 1280)
-cap.set(4, 480)
+cap.set(3, 2560)
+cap.set(4, 960)
 width, height = cap.get(3), cap.get(4)
 
 i = 0
@@ -16,8 +16,8 @@ i = 0
 while(1):
   ret, frame = cap.read()
 
-  framel = frame[0:480, 0:640]
-  framer = frame[0:480, 640:1280]
+  framel = frame[0:960, 0:1280]
+  framer = frame[0:960, 1280:2560]
 
   cv2.imshow("left", framel)
   cv2.imshow("right", framer)

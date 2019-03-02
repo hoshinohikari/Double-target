@@ -21,3 +21,6 @@ Extrinsic parameters (position of right camera wrt left camera):
 
 Rotation vector:             om = [ -0.01393   0.05559  -0.00784 ] � [ 0.01816   0.02235  0.00258 ]
 Translation vector:           T = [ -587.80646   6.84464  51.66740 ] � [ 3.19080   2.88306  14.46211 ]
+
+
+Note: The numerical errors are approximately three times the standard deviations (for reference).
