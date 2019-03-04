@@ -36,9 +36,6 @@ while True:
   imgL = cv2.cvtColor(img1_rectified, cv2.COLOR_BGR2GRAY)
   imgR = cv2.cvtColor(img2_rectified, cv2.COLOR_BGR2GRAY)  #BGR图像转灰度图
 
-  #imgL = cv2.fastNlMeansDenoising(imgL,None,1,7,21)
-  #imgR = cv2.fastNlMeansDenoising(imgR,None,1,7,21)
-
   num = cv2.getTrackbarPos("num", "depth")
   blockSize = cv2.getTrackbarPos("blockSize", "depth")  #在depth图上增加滑条
 
@@ -47,7 +44,17 @@ while True:
   if blockSize < 5:
     blockSize = 5
 
-  stereo = cv2.StereoBM_create(numDisparities=16*num, blockSize=blockSize)  #立体匹配，由滑条数值决定numDisparities与blockSize
+  stereo = cv2.StereoSGBM_create(0, 16, 9)  #立体匹配，由滑条数值决定numDisparities与blockSize
+  '''stereo.setPreFilterCap(63)
+  stereo.setBlockSize(9)
+  stereo.setP1(8 * 9 * 9)
+  stereo.setP2(32 * 9 * 9)
+  stereo.setMinDisparity(0)
+  stereo.setNumDisparities(160)
+  stereo.setUniquenessRatio(10)
+  stereo.setSpeckleWindowSize(100)
+  stereo.setSpeckleRange(32)
+  stereo.setDisp12MaxDiff(1)'''
   disparity = stereo.compute(imgL, imgR)
 
   disp = cv2.normalize(disparity, disparity, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)  #归一化函数算法
