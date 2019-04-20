@@ -25,4 +25,4 @@ python cap.py
 ```
 python test.py
 ```
-自行调整numDisparities与blockSize值后，点击depth图中的位置，就可在z轴读出距离  
+在代码内含有两种不同的匹配算法，可手动调节，BM算法速度较快，SGBM算法精确度较高，默认使用SGBM算法  
